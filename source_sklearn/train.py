@@ -11,7 +11,7 @@ import joblib
 
 ## TODO: Import any additional libraries you need to define a model
 from sklearn.naive_bayes import MultinomialNB,GaussianNB
-
+from sklearn.svm import SVC
 # Provided model load function
 def model_fn(model_dir):
     """Load model from the model_dir. This is the same model that is saved
@@ -60,10 +60,10 @@ if __name__ == '__main__':
     
 
     ## TODO: Define a model 
-    model = GaussianNB()
+#     model = GaussianNB()
 #     model = MultinomialNB(alpha=args.alpha)
     
-    
+    model = SVC(gamma='auto')
     ## TODO: Train the model
     pred_ = model.fit(train_x,train_y)
     
@@ -73,3 +73,4 @@ if __name__ == '__main__':
 
     # Save the trained model
     joblib.dump(model, os.path.join(args.model_dir, "model.joblib"))
+
